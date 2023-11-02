@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Таблица случайных цветов</title>
+    <style>
+      
+      td {
+        width: 150px;
+        height: 50px;
+        border: 5px solid black;
+      }
+      p, table, h1, button, div{
+        text-align: center;
+        font-weight: 900;
+      }
+      .gradient-button {
+            text-decoration: none;
+            display: inline-block;
+            color: rgb(0, 0, 0);
+            padding: 20px 30px;
+            margin: 10px 20px;
+            border-radius: 10px;
+            font-family: "Montserrat", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-image: linear-gradient(
+             to right,
+            #e68210 0%,
+            #ddf030 51%,
+            #60ff04 100%
+            );
+            background-size: 200% auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: 0.5s;
+        }
+        .gradient-button:hover {
+            background-position: right center;
+        }
+    </style>
+    <script>
+
+        
+      function create() {
+        const table1 = document.getElementById("table");
+        table1.innerHTML = "";
+
+        var table = document.getElementById("table");
+        for (var i = 0; i < 9; i++) {
+          var row = table.insertRow();
+          for (var j = 0; j < 9; j++) {
+            var cell = row.insertCell();
+            var color = generate_color();
+            cell.style.backgroundColor = color;
+            cell.innerHTML = color;
+          }
+        }
+      }
+
+      function generate_color() {
+        var r = Math.round(255 * Math.random()).toString(16);
+        var g = Math.round(255 * Math.random()).toString(16);
+        var b = Math.round(255 * Math.random()).toString(16);
+        return "#" + r + g + b;
+      }
+
+
+    </script>
+  </head>
+  <body>
+    <p>
+        <h1>Таблица цветов</h1>
+        <div>
+            <button class="gradient-button" onclick="create()">Создать табличку с цветами</button>
+        </div>
+        
+        <table align="center" id="table"></table>
+    </p>
+    
+  </body>
+</html>
